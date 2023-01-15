@@ -30,6 +30,8 @@ type Props = {
   handleChange?: (arg0: File | Array<File> | File) => void;
   onDraggingStateChange?: (dragging: boolean) => void;
   dropMessageStyle?: React.CSSProperties | undefined;
+  containerStyle?: any;
+  inputStyle?: any;
 };
 /**
  *
@@ -121,7 +123,9 @@ const FileUploader: React.FC<Props> = (props: Props): JSX.Element => {
     label,
     multiple,
     onDraggingStateChange,
-    dropMessageStyle
+    dropMessageStyle,
+    containerStyle,
+    inputStyle
   } = props;
   const labelRef = useRef<HTMLLabelElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -216,6 +220,7 @@ const FileUploader: React.FC<Props> = (props: Props): JSX.Element => {
     <UploaderWrapper
       overRide={children}
       className={`${classes || ''} ${disabled ? 'is-disabled' : ''}`}
+      containerStyle={containerStyle}
       ref={labelRef}
       htmlFor={name}
       onClick={blockEvent}
@@ -229,6 +234,7 @@ const FileUploader: React.FC<Props> = (props: Props): JSX.Element => {
         name={name}
         disabled={disabled}
         multiple={multiple}
+        inputStyle={inputStyle}
       />
       {dragging && (
         <HoverMsg style={dropMessageStyle}>
