@@ -20,7 +20,7 @@ export const UploaderWrapper = styled.label<any>`
   position: relative;
   ${(props) => (props.overRide ? '' : defaultStyle)};
   &.is-disabled {
-    border: dashed 2px ${darkGray};
+    border: none;
     cursor: no-drop;
     svg {
       fill: ${darkGray};
